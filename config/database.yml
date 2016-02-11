@@ -24,8 +24,8 @@ default: &default
 development:
   <<: *default
   database: quanta_development
-  username: ENV["DB_USERNAME"]
-  password: ENV["DB_PASSWORD"]
+  username: <%= ENV['DEV_DB_USER'] %>
+  password: <%= ENV['DEV_DB_PASSWORD'] %>
 
 
   # The specified database role being used to connect to postgres.
@@ -61,8 +61,8 @@ development:
 test:
   <<: *default
   database: quanta_test
-  username: ENV["DB_USERNAME"]
-  password: ENV["DB_PASSWORD"]
+  username: quantadbuser
+  password: quantadbpassword
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
