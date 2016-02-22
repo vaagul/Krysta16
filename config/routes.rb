@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'online_events' => 'online_events#index'
+
+  resources :workshops, path: 'workshop'
+  get 'events' => 'events#index'
+  #get 'workshop' => 'workshops#index'
+  devise_for :users
+  get 'welcome/index'
+
+  #resources :tests
+  root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

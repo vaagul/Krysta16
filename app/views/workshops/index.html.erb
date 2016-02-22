@@ -1,0 +1,42 @@
+
+<header id="head" class="secondary"></header>
+<div class="container">
+  <div class="col-md-12">
+    <%= image_tag 'workshop.jpg', class: 'img-responsive center-block' %>
+  </div>
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 workshop">
+    <p><b>Advanced Automotive engineering</b> is a combination of mechanical, electrical and materials engineering and safety engineering. It incorporates the elements of these fields as applied to the design, manufacture and operation of motorcycles, automobiles, buses and trucks and their respective engineering subsystems.</p>
+    <p>The automotive industries form one of the largest industrial dimensions in the world, from car manufacturers to fuel specialists. With the growing need for more efficient engines and automotive parts, materials selection and design play a more important role. Young Engineers! Is your dream is to become a part in one such distinguished automobile industry? Here is a chance. This one day workshop on <b class="yellow">Advanced automotive materials </b>will provide you an opportunity to interact with experienced industrialists and research scholars in the field and also gives you a scope to equip yourself with the knowledge of current trends in automobile sector. Take part in this sensational technical gathering to enhance your brainpower and add real value to your engineering career. We are hoping to see you in the arena.</p>
+    <div class="row">
+      <div class="col-md-8">
+        <ul class="workshop-details">
+
+          <li><span class="fa fa-rupee"></span> <b>Fee: 500</b> /- </li>
+          <li><span class="fa fa-calendar"></span> 19-03-2016 &nbsp; | &nbsp; <span class="fa fa-clock-o"></span>  Full Day</li>
+          <li><span class="fa fa-phone"></span> Naveen  +919566811386</li>
+          <li><span class="fa fa-phone"></span> Jaidah &nbsp; +919442638482</li>
+
+        </ul>
+      </div>
+      <% if user_signed_in? %>
+          <div class="col-md-4">
+            <div class="workshop-register">
+              <a href="http://thecollegefever.com/quanta16#buy" target="_blank" class="btn btn-action btn-sm">Register</a>
+            </div>
+          </div>
+    <% else %>
+          <div class="col-md-4">
+            <div class="cus-mod-foot cus-car-foot">
+              <a href="" class="btn btn-action">Sign in to Register</a>
+            </div>
+          </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+</div>
+<!--<h1 class="text-center">Advance Automotive Materials</h1>-->

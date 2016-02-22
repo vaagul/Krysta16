@@ -2,13 +2,146 @@
 <html>
 <head>
   <title>Quanta</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <meta charset="utf-8">
+  <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    'application' %>
+  <% if params[:controller] == 'events' || params[:controller] == 'online_events' %>
+    <%= stylesheet_link_tag 'events/component' %>
+    <%= stylesheet_link_tag 'events/normalize' %>
+    <%= javascript_include_tag 'events/modernizr.custom', 'data-turbolinks-track' => true %>
+  <% end %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+
+<body class="home">
+<!-- Fixed navbar -->
+
+
+<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+
+  <div class="container">
+    <div class="navbar-header">
+      <!-- Button for smallest screens -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag 'logo.png' %>
+      <% end %>
+      <!--<a class="navbar-brand" href="#"></a>-->
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li class="<%= active_class(root_path) %>"><%= link_to 'Home', root_path %></li>
+        <li class="<%= active_class(workshops_path) %>"><%= link_to 'Workshop', workshops_path %></li>
+        <li class="<%= active_class(events_path) %>"><%= link_to 'Events', events_path %></li>
+        <li class="<%= active_class(online_events_path) %>"><%= link_to 'Online Events', online_events_path %></li>
+        <li class="<%= active_class(root_path) %>"><%= link_to 'Accomodation', '#' %></li>
+        <!--<li class="dropdown">-->
+        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>-->
+        <!--<ul class="dropdown-menu">-->
+        <!--<li><a href="#">Left Sidebar</a></li>-->
+        <!--<li class="active"><a href="#">Right Sidebar</a></li>-->
+        <!--</ul>-->
+        <!--</li>-->
+        <% if user_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %>  <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Profile',  edit_user_registration_path %></li>
+                <li><%= link_to  'Logout', destroy_user_session_path,  method: 'delete' %></li>
+              </ul>
+            </li>
+        <% else %>
+            <li><%= link_to 'SIGN IN/ REGISTER', new_user_session_path, class: 'btn' %></li>
+        <% end %>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+<% if notice.present? %>
+    <div class="alert alert-warning  alert-dismissible main-alert" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Notification!</strong>
+      <span class="notice"><%= notice %></span>
+      <% if alert.present? %>
+        <span class="alert"><%= alert %></span>
+      <% end %>
+    </div>
+<% end %>
+<!-- /.navbar -->
 
 <%= yield %>
 
+
+<footer id="footer" class="top-space">
+
+  <div class="footer1">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-3 widget">
+          <h3 class="widget-title">Contact</h3>
+          <div class="widget-body">
+            <p>+91 9677475231<br>
+              <a href="mailto:">quantaceg@gmail.com</a><br>
+              <br>
+              CEG Campus, Anna University, Sardar Patel Road, Guindy, Chennai - 25
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-3 widget">
+          <h3 class="widget-title">Follow Us</h3>
+          <div class="widget-body">
+            <p class="follow-me-icons">
+              <a href="https://www.twitter.com/quantaceg" target="_blank"><i class="fa fa-twitter fa-2"></i></a>
+              <a href="https://www.facebook.com/cegquanta" target="_blank"><i class="fa fa-facebook fa-2"></i></a>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 widget">
+          <h3 class="widget-title">About Quanta</h3>
+          <div class="widget-body">
+            <p>Quanta – “Miniaturizing Omnipotence” is a prodigious techno-cultural event, jointly organised by the Society of Materials Science Engineers (SMSE). The three-day extravaganza spanning between March 18 to March 20 is premeditated to test not only the cognizance of students about Materials Science but also explores their creative abilities as well.</p>
+            <p>Quanta’16 is now bigger and better to stun participants and reward the cognizance of students. We welcome you all to Quanta’16 with a guarantee to enrich your brain, empower your thoughts and excite your adrenaline – in short, an electrifying experience awaits you here at CEG, Anna University.</p>
+          </div>
+        </div>
+
+      </div> <!-- /row of widgets -->
+    </div>
+  </div>
+
+  <div class="footer2">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6 widget">
+          <div class="widget-body">
+            <p class="simplenav">
+              <%= link_to 'Workshop', workshops_path %> |
+              <%= link_to 'Events', events_path %> |
+              <%= link_to 'Online Events', 'online_events_path' %> |
+              <%= link_to 'Contact', workshops_path %> |
+              <b><%= link_to 'Sign Up', new_user_registration_path %></b>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 widget">
+          <div class="widget-body">
+            <p class="text-right">
+              Copyright &copy; 2016, Quanta. Maintained by <a href="http://fb.com/pswebsters/" rel="Maintained">P.S Websters</a>
+            </p>
+          </div>
+        </div>
+
+      </div> <!-- /row of widgets -->
+    </div>
+  </div>
+
+</footer>
+
+<%= javascript_include_tag params[:controller] %>
 </body>
 </html>
