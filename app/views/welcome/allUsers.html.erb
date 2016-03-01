@@ -6,17 +6,20 @@
   <thead></thead>
   <tbody>
     <tr>
+      <td>S. no</td>
       <td>Name</td>
       <td>email</td>
       <td>Mobile</td>
     </tr>
+    <% i = 1 %>
     <% @users.each  do |user| %>
       <tr>
-        <td> <%= user.id %>  </td>
+        <td> <% i %> </td>
         <td> <%= user.name %> </td>
         <td> <%= user.email %> </td>
         <td> <%= user.mobile %> </td>
       </tr>
+  <% i = i+1 %>
     <% end %>
   </tbody>
 </table>
