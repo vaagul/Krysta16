@@ -10,6 +10,7 @@
       <td>Name</td>
       <td>email</td>
       <td>Mobile</td>
+      <td>College</td>
     </tr>
     <% i = 1 %>
     <% @users.each  do |user| %>
@@ -18,6 +19,7 @@
         <td> <%= user.name %> </td>
         <td> <%= user.email %> </td>
         <td> <%= user.mobile %> </td>
+        <td> <%= user.college %> </td>
       </tr>
   <% i = i+1 %>
     <% end %>
