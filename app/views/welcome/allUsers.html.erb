@@ -1,0 +1,22 @@
+<header id="head" class="secondary"></header>
+<div class="container">
+  <h1>Students Details</h1>
+  <hr>
+  <table class="table table-striped">
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td>Name</td>
+      <td>email</td>
+      <td>Mobile</td>
+    </tr>
+    <% @users.each  do |user| %>
+      <tr>
+        <td> <%= user.name %> </td>
+        <td> <%= user.email %> </td>
+        <td> <%= user.mobile %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

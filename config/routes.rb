@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #get 'workshop' => 'workshops#index'
   devise_for :users
   get 'welcome/index'
+  get 'all_users' => 'welcome#allUsers'
 
   #resources :tests
   root 'welcome#index'
